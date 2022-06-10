@@ -1,7 +1,7 @@
-import 'package:fc62_theavengers/components/snack_bar_messages.dart';
-import 'package:fc62_theavengers/database/firestore_database.dart';
-import 'package:fc62_theavengers/database/shared_preference_db.dart';
-import 'package:fc62_theavengers/model/end_user_model.dart';
+import 'package:enduserapp/components/snack_bar_messages.dart';
+import 'package:enduserapp/database/firestore_database.dart';
+import 'package:enduserapp/database/shared_preference_db.dart';
+import 'package:enduserapp/model/shop_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 class EmailAuth {
 
   static final _auth = FirebaseAuth.instance;
-  static EndUserModel endUserModel = EndUserModel();
 
   static Future<bool> signUpWithEmail(String email, String password, String name, BuildContext context) async {
     bool state = false;
@@ -53,6 +52,7 @@ class EmailAuth {
   static Future<bool> signOut() async {
     bool state = false;
     SharedPreferenceDB.resetPreferences();
+    ShopData.shopList.clear();
     await _auth.signOut();
     return state;
   }

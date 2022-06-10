@@ -1,20 +1,24 @@
 class OrderModel{
   String? uid;
-  String? userUid;
-  List<String>? products;
-  List<String>? quantity;
+  String? productUid;
+  String? productName;
+  String? image;
+  String? price;
+  String? quantity;
   String? time;
 
-  OrderModel({this.uid,this.products,this.quantity,this.userUid,this.time});
+  OrderModel({this.uid,this.productName,this.quantity,this.productUid,this.time,this.image,this.price});
 
   //data from server
   factory OrderModel.fromMap(map){
     return OrderModel(
       uid: map['uid'],
-      userUid: map['userUid'],
+      productUid: map['userUid'],
       time: map['time'],
-      quantity: map['quantity'] is Iterable ? List.from(map['quantity']) : null,
-      products: map['products'] is Iterable ? List.from(map['products']) : null,
+      image: map['image'],
+      quantity: map['quantity'],
+      productName: map['productName'],
+      price: map['price']
     );
   }
 
@@ -22,10 +26,12 @@ class OrderModel{
   Map<String, dynamic> toMap(){
     return{
       'uid': uid,
-      'userUid': userUid,
+      'userUid': productUid,
       'quantity': quantity,
-      'products': products,
+      'productName': productName,
       'time': time,
+      'image': image,
+      'price': price,
     };
   }
 }

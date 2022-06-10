@@ -2,9 +2,12 @@ class ProductModel{
   String? uid;
   String? description;
   String? price;
+  String? rating;
+  String? category;
+  String? image;
   String? shop;
 
-  ProductModel({this.uid,this.description,this.price,this.shop});
+  ProductModel({this.uid,this.description,this.price,this.shop,this.image,this.category,this.rating});
 
   //data from server
   factory ProductModel.fromMap(map){
@@ -13,6 +16,9 @@ class ProductModel{
       description: map['description'],
       price: map['price'],
       shop: map['shop'],
+      image: map['image'],
+      category: map['category'],
+      rating: map['rating'],
     );
   }
 
@@ -23,6 +29,9 @@ class ProductModel{
       'description': description,
       'price': price,
       'shop': shop,
+      'image': image,
+      'category': category,
+      'rating': rating,
     };
   }
 }

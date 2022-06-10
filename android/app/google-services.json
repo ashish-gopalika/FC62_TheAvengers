@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "853446713483",
+    "project_id": "medefind-63325",
+    "storage_bucket": "medefind-63325.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853446713483:android:933ee3e8691367590d348e",
+        "android_client_info": {
+          "package_name": "com.example.enduserapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853446713483-jem767hvmagg0e0sdihbtidcq4rhodle.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzeHDh2Y_aO-qKgB8QRbel6UcnG9_lEVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853446713483-jem767hvmagg0e0sdihbtidcq4rhodle.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
