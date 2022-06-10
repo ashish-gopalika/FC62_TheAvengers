@@ -7,7 +7,6 @@ class Loader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
       body: SafeArea(
         child: Center(
           child: Column(
