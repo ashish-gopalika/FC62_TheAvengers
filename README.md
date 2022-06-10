@@ -18,6 +18,5 @@ issue.
 
 <li>Firebase for backend</li>
 
-</li>Firestore as database service</li>
-</ul>
+<li>Firestore as database service</li></ul>
  
