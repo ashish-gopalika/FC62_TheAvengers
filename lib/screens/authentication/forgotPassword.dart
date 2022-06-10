@@ -8,8 +8,20 @@ class forgotPass extends StatefulWidget {
 }
 
 class _forgotPassState extends State<forgotPass> {
+  final GlobalKey<FormState> _form=GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Container(
+      key: _form,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/bg.jpg"),
+            fit: BoxFit.cover,
+          )
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+      ),
+    );
   }
 }

@@ -12,6 +12,49 @@ class MyLogin extends StatefulWidget {
 class _MyLoginState extends State<MyLogin> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage("assets/bg.jpg"),
+    fit: BoxFit.cover,
+    )
+    ),
+    child:Scaffold(
+    backgroundColor: Colors.transparent,
+      body: Stack(
+        children: [
+          ClipPath(
+            clipper: OvalBottomBorderClipper(),
+            child:Container(
+              height: 180,
+              color:Colors.blueAccent,
+              child: Center(
+                child: Text("MEDEFIND",style:TextStyle(color:Colors.white,fontSize: 25,fontFamily: "courier",fontWeight:FontWeight.bold,letterSpacing:1 )),
+              ),
+            )
+          ),
+          Container(
+              padding: EdgeInsets.only(top:MediaQuery.of(context).size.height*0.15,left:MediaQuery.of(context).size.width*0.37,right:MediaQuery.of(context).size.width*0.37),
+              child: CircleAvatar(
+                backgroundColor: Colors.blueAccent,
+                radius: 50,
+                child: Icon(Icons.person,
+                    size:70),
+              )
+          ),
+          SizedBox(
+            height:20
+          ),
+          Container(
+            padding: EdgeInsets.only(top:20),
+            child: Text("Welcome Back",style:TextStyle(
+              color: Colors.blueAccent,
+              fontSize: 33,
+            ),
+            ),
+          ),
+        ],
+      ),
+    ));
   }
 }
