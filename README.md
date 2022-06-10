@@ -14,10 +14,10 @@ issue.
 
 
 ### For the implementation of our idea, we will be using the following tech stack
-Flutter for frontend
+<ul><li>Flutter for frontend</li>
 
+<li>Firebase for backend</li>
 
-Firebase for backend
-
-</br>
-Firestore as database service
+</li>Firestore as database service</li>
+</ul>
+ 
