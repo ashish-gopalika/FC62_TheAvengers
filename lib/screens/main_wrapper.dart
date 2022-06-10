@@ -1,5 +1,5 @@
-import 'package:fc62_theavengers/screens/loading_screens/main_loading.dart';
-import 'package:fc62_theavengers/screens/main.dart';
+import 'package:enduserapp/screens/loading_screens/main_loading.dart';
+import 'package:enduserapp/screens/main.dart';
 import 'package:flutter/material.dart';
 
 class MainWrapper extends StatefulWidget {
