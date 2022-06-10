@@ -15,5 +15,9 @@ issue.
 
 ### For the implementation of our idea, we will be using the following tech stack
 Flutter for frontend
+
+
 Firebase for backend
+
+</br>
 Firestore as database service
