@@ -40,11 +40,30 @@ class ProfileScreen extends StatelessWidget {
             ProfileMenu(
               text: "Delete Account",
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const DeleteAccount()),
+                showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Confirm Delete Account'),
+                    content: const Text('Are you sure you want to delete your account?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const DeleteAccount()),
+                          );
+                        },
+                        child: const Text('Delete Now'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Cancel'),
+                        child: const Text('Cancel'),
+                      ),
+                    ],
+                  ),
                 );
+
               },
             ),
             ProfileMenu(
@@ -59,7 +78,7 @@ class ProfileScreen extends StatelessWidget {
                 showDialog<String>(
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
-                    title: const Text('Sign Out'),
+                    title: const Text('Sign out'),
                     content: const Text('Do you want to Sign Out?'),
                     actions: <Widget>[
                       TextButton(
