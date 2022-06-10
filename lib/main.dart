@@ -1,4 +1,4 @@
-import 'package:fc62_theavengers/screens/authentication/auth_wrapper.dart';
+import 'package:enduserapp/screens/authentication/auth_wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';

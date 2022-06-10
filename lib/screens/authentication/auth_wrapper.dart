@@ -1,8 +1,12 @@
-import 'package:fc62_theavengers/database/shared_preference_db.dart';
-import 'package:fc62_theavengers/screens/bottom_navigator.dart';
-import 'package:fc62_theavengers/screens/loading_screens/loading.dart';
-import 'package:fc62_theavengers/screens/main.dart';
+import 'package:enduserapp/database/shared_preference_db.dart';
+import 'package:enduserapp/screens/asset_loader.dart';
+import 'package:enduserapp/screens/authentication/login_screen.dart';
+import 'package:enduserapp/screens/bottom_navigator.dart';
+import 'package:enduserapp/screens/loading_screens/loading.dart';
+import 'package:enduserapp/screens/loading_screens/main_loading.dart';
 import 'package:flutter/material.dart';
+
+import '../main_wrapper.dart';
 
 class AuthWrapper extends StatefulWidget {
   const AuthWrapper({Key? key}) : super(key: key);
@@ -18,13 +22,14 @@ class _AuthWrapperState extends State<AuthWrapper> {
       future: SharedPreferenceDB.getValue('name'),
       builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
         if (snapshot.data==null) {
-          return const MainScreen();
+          return const MainWrapper();
         } else if (snapshot.hasData) {
-          return const BottomNavigator();
+          print('going to assets...');
+          return const AssetLoader();
         } else if (snapshot.hasError) {
-          return Text(snapshot.data.toString());
+          return const LoginScreen();
         } else {
-          return const Loader();
+          return const MainLoader();
         }
       },
     );
