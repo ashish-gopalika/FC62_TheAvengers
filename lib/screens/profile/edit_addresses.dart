@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:enduserapp/screens/profile/Address_Card.dart';
-import 'package:enduserapp/screens/profile/Address.dart';
+import 'package:enduserapp/model/address.dart';
 import 'package:enduserapp/screens/profile/Add_address.dart';
 class EditAddresses extends StatelessWidget {
   EditAddresses({Key? key}) : super(key: key);

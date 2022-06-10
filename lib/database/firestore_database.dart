@@ -26,7 +26,7 @@ class FirestoreDB{
     UserData.endUserModel.email = user!.email;
     UserData.endUserModel.uid = user.uid;
     UserData.endUserModel.name = name;
-    UserData.endUserModel.phoneNumber='';
+    UserData.endUserModel.phoneNumber='none';
     UserData.endUserModel.cart=[];
     UserData.endUserModel.addresses=[];
     UserData.endUserModel.orders = [];
@@ -48,7 +48,7 @@ class FirestoreDB{
           SharedPreferenceDB.setValue('uid',value.data()!['uid']);
           SharedPreferenceDB.setValue('email',value.data()!['email']);
           SharedPreferenceDB.setValue('name',value.data()!['name']);
-          SharedPreferenceDB.setValue('phoneNumber','none');
+          SharedPreferenceDB.setValue('phoneNumber',value.data()!['name']);
         return EndUserModel.fromMap(value.data());
     });
     return EndUserModel();
@@ -136,6 +136,11 @@ class FirestoreDB{
   static void updateQuantity(OrderModel newModel) async{
     await firebaseFirestore
         .collection('cart').doc(newModel.uid!).set(newModel.toMap());
+  }
+
+  static void updateProfile(EndUserModel updatedUser) async{
+    await firebaseFirestore
+        .collection('end-users').doc(updatedUser.uid!).set(updatedUser.toMap());
   }
 
   static void removeFromCart(var itemID,BuildContext context,int index) async{

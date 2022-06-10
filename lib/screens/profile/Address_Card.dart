@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:enduserapp/screens/profile/Address.dart';
+import 'package:enduserapp/model/address.dart';
 class AddressCard extends StatelessWidget {
   const AddressCard({
     Key? key,

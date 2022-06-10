@@ -21,6 +21,7 @@ class SharedPreferenceDB{
     UserData.endUserModel.uid=prefs.getString('uid');
     UserData.endUserModel.email=prefs.getString('email');
     UserData.endUserModel.name=prefs.getString('name');
+    UserData.endUserModel.phoneNumber=prefs.getString('phoneNumber');
     value = prefs.getString(valueName);
     return value;
   }
