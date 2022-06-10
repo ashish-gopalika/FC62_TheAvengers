@@ -37,34 +37,31 @@ class _BottomNavigatorState extends State<BottomNavigator> with TickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<CartData>(
-      create: (context) => CartData(),
-      child: SafeArea(
-        child: Scaffold(
-          bottomNavigationBar: CurvedNavigationBar(
-            key: _bottomNavigationKey,
-            index: 0,
-            height: 60.0,
-            items: const <Widget>[
-              Icon(Icons.home, size: 30,color: Colors.white,),
-              Icon(Icons.shopping_cart_outlined, size: 30,color: Colors.white,),
-              Icon(Icons.list_alt, size: 30,color: Colors.white,),
-              Icon(Icons.perm_identity, size: 30,color: Colors.white,),
-            ],
-            color: Colors.blueAccent,
-            buttonBackgroundColor: Colors.blueAccent,
-            backgroundColor: Colors.transparent,
-            animationCurve: Curves.easeInOut,
-            animationDuration: const Duration(milliseconds: 500),
-            onTap: (index) {
-              setState(() {
-                _page = index;
-              });
-            },
-            letIndexChange: (index) => true,
-          ),
-          body: pageSelector()
+    return SafeArea(
+      child: Scaffold(
+        bottomNavigationBar: CurvedNavigationBar(
+          key: _bottomNavigationKey,
+          index: 0,
+          height: 60.0,
+          items: const <Widget>[
+            Icon(Icons.home, size: 30,color: Colors.white,),
+            Icon(Icons.shopping_cart_outlined, size: 30,color: Colors.white,),
+            Icon(Icons.list_alt, size: 30,color: Colors.white,),
+            Icon(Icons.perm_identity, size: 30,color: Colors.white,),
+          ],
+          color: Colors.blueAccent,
+          buttonBackgroundColor: Colors.blueAccent,
+          backgroundColor: Colors.transparent,
+          animationCurve: Curves.easeInOut,
+          animationDuration: const Duration(milliseconds: 500),
+          onTap: (index) {
+            setState(() {
+              _page = index;
+            });
+          },
+          letIndexChange: (index) => true,
         ),
+        body: pageSelector()
       ),
     );
   }

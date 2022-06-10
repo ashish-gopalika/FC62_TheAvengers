@@ -1,4 +1,5 @@
 import 'package:enduserapp/model/order_model.dart';
+import 'package:enduserapp/model/product_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
@@ -7,7 +8,7 @@ class ProductCard extends StatelessWidget {
     required this.productItem,
   }) : super(key: key);
 
-  final OrderModel productItem;
+  final ProductModel productItem;
 
   @override
   Widget build(BuildContext context) {
