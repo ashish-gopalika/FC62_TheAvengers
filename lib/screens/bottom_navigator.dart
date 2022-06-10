@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:enduserapp/model/cart_data.dart';
 import 'package:enduserapp/screens/cart/cart_screen.dart';
 import 'package:enduserapp/screens/home/home_screen.dart';
-import 'package:enduserapp/screens/orders/OrdersScreen.dart';
+import 'package:enduserapp/screens/orders/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'profile/profile_screen.dart';

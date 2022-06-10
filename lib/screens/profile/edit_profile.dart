@@ -1,14 +1,27 @@
-
+import 'package:enduserapp/database/firestore_database.dart';
+import 'package:enduserapp/model/user_data.dart';
 import 'package:flutter/material.dart';
-import 'package:enduserapp/screens/profile/profile_pic.dart';
 
-class EditProfile extends StatelessWidget {
+import '../../database/shared_preference_db.dart';
+import 'profile_pic.dart';
+
+class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
+
+  @override
+  State<EditProfile> createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Edit Profile'),
+        centerTitle: true,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(4.0),
           child: Container(
@@ -36,10 +49,6 @@ class EditProfile extends StatelessWidget {
           },
           child: ListView(
             children: [
-              const Text(
-                "Edit Profile",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
-              ),
               const SizedBox(
                 height: 15,
               ),
@@ -48,11 +57,11 @@ class EditProfile extends StatelessWidget {
               const SizedBox(
                 height: 35,
               ),
-              buildTextField("Full Name", "Dor Alex"),
-              buildTextField("Phone Number", "9876543210"),
-              const SizedBox(
-                height:200,
-              ),
+              buildTextField(
+                  "Full Name", UserData.endUserModel.name!, nameController),
+              buildTextField("Phone Number", UserData.endUserModel.phoneNumber!,
+                  phoneNameController),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -60,7 +69,8 @@ class EditProfile extends StatelessWidget {
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 50),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),),
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -71,19 +81,62 @@ class EditProfile extends StatelessWidget {
                             color: Colors.black)),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      String name = nameController.text;
+                      String phoneNumber = phoneNameController.text;
+
+                      print(name.isNotEmpty);
+                      print(phoneNumber.isNotEmpty);
+
+                      if(name.isNotEmpty) {
+                        SharedPreferenceDB.setValue('name', name);
+                        UserData.endUserModel.name = name;
+                      }
+                      else{
+                        name=UserData.endUserModel.name!;
+                        SharedPreferenceDB.setValue('name', UserData.endUserModel.name);
+                      }
+
+                      if(phoneNumber.isNotEmpty){
+                        SharedPreferenceDB.setValue('phoneNumber', phoneNumber);
+                        UserData.endUserModel.phoneNumber = phoneNumber;
+                      }
+                      else{
+                        phoneNumber=UserData.endUserModel.phoneNumber!;
+                        SharedPreferenceDB.setValue('phoneNumber', UserData.endUserModel.phoneNumber);
+                      }
+
+
+                      FirestoreDB.updateProfile(UserData.endUserModel);
+
+                      showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                            title: const Text('Updated'),
+                            content:
+                                const Text('Your profile has been updated'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, 'OK'),
+                                child: const Text('OK'),
+                              ),
+                            ]),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.blueAccent,
                       padding: const EdgeInsets.symmetric(horizontal: 50),
                       //elevation: 2,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),),
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
                     child: const Text(
                       "SAVE",
-                      style:  TextStyle(
-                          fontSize: 14, letterSpacing: 2.2, color: Colors.white),
+                      style: TextStyle(
+                          fontSize: 14,
+                          letterSpacing: 2.2,
+                          color: Colors.white),
                     ),
-
                   )
                 ],
               )
@@ -95,23 +148,25 @@ class EditProfile extends StatelessWidget {
   }
 }
 
-  Widget buildTextField(
-      String labelText, String placeholder,) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 35.0),
-      child: TextFormField(
-
-        decoration: InputDecoration(
-
-            contentPadding: const EdgeInsets.only(bottom: 3),
-            labelText: labelText,
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: placeholder,
-            hintStyle: const TextStyle(
-              fontSize: 16,
-              //fontWeight: FontWeight.bold,
-              color: Colors.black,
-            )),
+Widget buildTextField(
+    String labelText, String placeholder, TextEditingController controller) {
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 35.0),
+    child: TextFormField(
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.only(bottom: 3),
+        labelText: labelText,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintText: placeholder,
+        hintStyle: const TextStyle(
+          fontSize: 16,
+          color: Colors.black,
+        ),
       ),
-    );
-  }
+      controller: controller,
+      onSaved: (value) {
+        controller.text = value!;
+      },
+    ),
+  );
+}

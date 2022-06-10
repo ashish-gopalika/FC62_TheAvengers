@@ -1,11 +1,8 @@
 import 'package:enduserapp/database/firestore_database.dart';
 import 'package:enduserapp/model/order_data.dart';
 import 'package:enduserapp/screens/loading_screens/main_loading.dart';
-import 'package:enduserapp/screens/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../model/shop_data.dart';
 import 'bottom_navigator.dart';
 
 class AssetLoader extends StatefulWidget {
