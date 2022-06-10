@@ -1,7 +1,7 @@
-import 'package:fc62_theavengers/screens/authentication/login_screen.dart';
-import 'package:fc62_theavengers/screens/authentication/register_screen.dart';
-import 'package:fc62_theavengers/screens/loading_screens/loading.dart';
-import 'package:fc62_theavengers/services/email_auth.dart';
+import 'package:enduserapp/screens/authentication/login_screen.dart';
+import 'package:enduserapp/screens/authentication/register_screen.dart';
+import 'package:enduserapp/screens/loading_screens/loading.dart';
+import 'package:enduserapp/services/email_auth.dart';
 import 'package:flutter/material.dart';
 
 class EmailSignUpWrapper extends StatefulWidget {

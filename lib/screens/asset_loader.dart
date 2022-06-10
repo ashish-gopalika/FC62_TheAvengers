@@ -1,7 +1,7 @@
-import 'package:fc62_theavengers/database/firestore_database.dart';
-import 'package:fc62_theavengers/model/order_data.dart';
-import 'package:fc62_theavengers/screens/loading_screens/main_loading.dart';
-import 'package:fc62_theavengers/screens/main.dart';
+import 'package:enduserapp/database/firestore_database.dart';
+import 'package:enduserapp/model/order_data.dart';
+import 'package:enduserapp/screens/loading_screens/main_loading.dart';
+import 'package:enduserapp/screens/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

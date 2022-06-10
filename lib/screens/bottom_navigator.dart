@@ -1,11 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:fc62_theavengers/screens/cart/cart_screen.dart';
-import 'package:fc62_theavengers/screens/home/home_screen.dart';
-import 'package:fc62_theavengers/screens/main.dart';
-import 'package:fc62_theavengers/screens/orders/OrdersScreen.dart';
-import 'package:fc62_theavengers/services/email_auth.dart';
+import 'package:enduserapp/model/cart_data.dart';
+import 'package:enduserapp/screens/cart/cart_screen.dart';
+import 'package:enduserapp/screens/home/home_screen.dart';
+import 'package:enduserapp/screens/orders/OrdersScreen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import 'profile/profile_screen.dart';
 
 class BottomNavigator extends StatefulWidget {
@@ -38,31 +37,35 @@ class _BottomNavigatorState extends State<BottomNavigator> with TickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      bottomNavigationBar: CurvedNavigationBar(
-        key: _bottomNavigationKey,
-        index: 0,
-        height: 60.0,
-        items: const <Widget>[
-          Icon(Icons.home, size: 30,color: Colors.white,),
-          Icon(Icons.shopping_cart_outlined, size: 30,color: Colors.white,),
-          Icon(Icons.list_alt, size: 30,color: Colors.white,),
-          Icon(Icons.perm_identity, size: 30,color: Colors.white,),
-        ],
-        color: Colors.blueAccent,
-        buttonBackgroundColor: Colors.blueAccent,
-        backgroundColor: Colors.white,
-        animationCurve: Curves.easeInOut,
-        animationDuration: const Duration(milliseconds: 600),
-        onTap: (index) {
-          setState(() {
-            _page = index;
-          });
-        },
-        letIndexChange: (index) => true,
+    return ChangeNotifierProvider<CartData>(
+      create: (context) => CartData(),
+      child: SafeArea(
+        child: Scaffold(
+          bottomNavigationBar: CurvedNavigationBar(
+            key: _bottomNavigationKey,
+            index: 0,
+            height: 60.0,
+            items: const <Widget>[
+              Icon(Icons.home, size: 30,color: Colors.white,),
+              Icon(Icons.shopping_cart_outlined, size: 30,color: Colors.white,),
+              Icon(Icons.list_alt, size: 30,color: Colors.white,),
+              Icon(Icons.perm_identity, size: 30,color: Colors.white,),
+            ],
+            color: Colors.blueAccent,
+            buttonBackgroundColor: Colors.blueAccent,
+            backgroundColor: Colors.transparent,
+            animationCurve: Curves.easeInOut,
+            animationDuration: const Duration(milliseconds: 500),
+            onTap: (index) {
+              setState(() {
+                _page = index;
+              });
+            },
+            letIndexChange: (index) => true,
+          ),
+          body: pageSelector()
+        ),
       ),
-      body: pageSelector()
     );
   }
 }

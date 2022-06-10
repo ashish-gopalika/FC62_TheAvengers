@@ -1,5 +1,5 @@
-import 'package:fc62_theavengers/screens/authentication/emailloginwrapper.dart';
-import 'package:fc62_theavengers/screens/authentication/register_screen.dart';
+import 'package:enduserapp/screens/authentication/emailloginwrapper.dart';
+import 'package:enduserapp/screens/authentication/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,17 +17,18 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(4.0),
-          child: Container(
-            color: Colors.black,
-            height: 2.0,
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+        backgroundColor: Colors.blueAccent,
+        // bottom: PreferredSize(
+        //   preferredSize: const Size.fromHeight(4.0),
+        //   child: Container(
+        //     color: Colors.blueAccent,
+        //     height: 2.0,
+        //   ),
+        // ),
+        // backgroundColor: Colors.transparent,
+        // elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back,color: Colors.black,),
+          icon: const Icon(Icons.arrow_back,color: Colors.white,),
           onPressed: (){
             Navigator.of(context).pop();
           },
@@ -45,11 +46,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     const Text(
-                      'Login',
+                      'Welcome',
                       style: TextStyle(
                         fontSize: 35,
+                        color: Colors.black54,
                         fontWeight: FontWeight.bold,
                       ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    const Text(
+                      'Now, Get Medicines on just one click!',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black45,
+                        ),
                     ),
                     const SizedBox(
                       height: 60,
@@ -110,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           )),
                     ),
                     const SizedBox(
-                      height: 25,
+                      height: 55,
                     ),
                     SizedBox(
                       height: 55,
@@ -120,19 +132,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           final String email = emailController.text;
                           final String password = passwordController.text;
                           if(_formkey.currentState!.validate()) {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => EmailLoginWrapper(email: email,password: password)),
-                            );
+                            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                EmailLoginWrapper(email: email,password: password)), (Route<dynamic> route) => false);
+                            // Navigator.pushReplacement(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => EmailLoginWrapper(email: email,password: password)),
+                            // );
                           }
                         },
                         style: ButtonStyle(
-                          backgroundColor:  MaterialStateProperty.all<Color>(Colors.black),
+                          backgroundColor:  MaterialStateProperty.all<Color>(Colors.blueAccent),
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18.0),
-                                side: const BorderSide(color: Colors.transparent)),
+                                side: const BorderSide(color: Colors.blueAccent)),
                           ),
                         ),
                         child: const Text(

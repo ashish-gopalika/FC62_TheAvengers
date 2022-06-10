@@ -1,4 +1,4 @@
-import 'package:fc62_theavengers/screens/authentication/emailsignupwrapper.dart';
+import 'package:enduserapp/screens/authentication/emailsignupwrapper.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -13,25 +13,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-  TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(4.0),
-            child: Container(
-              color: Colors.black,
-              height: 2.0,
-            ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+        backgroundColor: Colors.blueAccent,
+        // bottom: PreferredSize(
+        //     preferredSize: const Size.fromHeight(4.0),
+        //     child: Container(
+        //       color: Colors.blueAccent,
+        //       height: 2.0,
+        //     ),
+        // ),
+        // backgroundColor: Colors.transparent,
+        // elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.white,
           ),
           onPressed: () {
             Navigator.of(context).pop();
@@ -50,14 +51,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     const Text(
-                      'Registration',
+                      'Join Now',
                       style: TextStyle(
                         fontSize: 35,
+                        color: Colors.black54,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(
-                      height: 60,
+                      height: 5,
+                    ),
+                    const Text(
+                      'Get best deal and offers',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black45,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 50,
                     ),
                     TextFormField(
                       autofocus: false,
@@ -164,7 +176,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           )),
                     ),
                     const SizedBox(
-                      height: 25,
+                      height: 55,
                     ),
                     SizedBox(
                       height: 55,
@@ -188,12 +200,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           }
                         },
                         style: ButtonStyle(
-                          backgroundColor:  MaterialStateProperty.all<Color>(Colors.black),
+                          backgroundColor:  MaterialStateProperty.all<Color>(Colors.blueAccent),
                           shape:
                           MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18.0),
-                                side: const BorderSide(color: Colors.transparent)),
+                                side: const BorderSide(color: Colors.blueAccent)),
                           ),
                         ),
                         child: const Text(
