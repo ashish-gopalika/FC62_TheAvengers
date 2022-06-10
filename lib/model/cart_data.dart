@@ -14,6 +14,16 @@ class CartData extends ChangeNotifier{
     notifyListeners();
   }
 
+  void updateAddQuantity(int index){
+    cartItems[index].quantity=(int.parse(cartItems[index].quantity!)+1).toString();
+    notifyListeners();
+  }
+
+  void updateDeleteQuantity(int index){
+    cartItems[index].quantity=(int.parse(cartItems[index].quantity!)-1).toString();
+    notifyListeners();
+  }
+
   void removeFromCart(int index){
     cartItems.removeAt(index);
     notifyListeners();

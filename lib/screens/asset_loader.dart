@@ -27,7 +27,7 @@ class _AssetLoaderState extends State<AssetLoader> {
           if (snapshot.data==true) {
             return const BottomNavigator();
           } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
+            return SafeArea(child: Text('${snapshot.error}'));
           } else {
             return const MainLoader();
           }

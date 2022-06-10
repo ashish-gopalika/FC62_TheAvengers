@@ -27,9 +27,7 @@ class _BodyState extends State<Body> {
                 .toString()),
             direction: DismissDirection.endToStart,
             onDismissed: (direction) {
-              FirestoreDB.removeFromCart(Provider.of<CartData>(context, listen: false).getCartItems[index].uid!);
-              Provider.of<CartData>(context, listen: false)
-                  .removeFromCart(index);
+              FirestoreDB.removeFromCart(Provider.of<CartData>(context, listen: false).getCartItems[index].uid!,context,index);
             },
             background: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
