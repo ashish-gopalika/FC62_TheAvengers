@@ -1,3 +1,4 @@
+# Idea
 Our idea is to make the whole process of getting the medicine to your doorstep a cakewalk. So, the
 question is how? We will create an app through which you can get a list of medical stores near you
 and you can simply order medicines through it, instead of you going to all medicine stores in your
@@ -9,7 +10,13 @@ Also through this, we will be collecting the data of medicines bought and sold i
 create an ML prediction model which can tell us about the kind of disease that can spread at a large
 level in a particular area and government can take preventive measures before it becomes a major
 issue.
-For the implementation of our idea, we will be using the following tech stack
-Flutter for frontend
-Firebase for backend
-Firestore as database service
+
+
+
+### For the implementation of our idea, we will be using the following tech stack
+<ul><li>Flutter for frontend</li>
+
+<li>Firebase for backend</li>
+
+<li>Firestore as database service</li></ul>
+ 
