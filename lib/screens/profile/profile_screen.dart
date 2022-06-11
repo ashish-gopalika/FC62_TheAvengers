@@ -74,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
               },
             ),
             ProfileMenu(
-              text: "Log Out",
+              text: "Sign Out",
               press: () {
                 showDialog<String>(
                   context: context,

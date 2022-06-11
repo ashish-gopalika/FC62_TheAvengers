@@ -62,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       height: 5,
                     ),
                     const Text(
-                      'Get best deal and offers',
+                      'Get best deals and offers',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.black45,
@@ -80,9 +80,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.account_circle),
+                        suffixIcon: const Icon(Icons.account_circle),
                         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                        hintText: 'Enter Name',
+                        fillColor: Colors.grey.shade100,
+                        filled: true,
+                        hintText: "Enter your name",
+                        labelText: "Name",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -110,9 +113,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.mail),
                         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                        hintText: 'Email',
+                        suffixIcon: Icon(Icons.email_outlined),
+                        fillColor: Colors.grey.shade100,
+                        filled: true,
+                        labelText: "Email",
+                        hintText: "Enter your email",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -131,7 +137,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           return ("Password is required for login");
                         }
                         if (!regex.hasMatch(value)) {
-                          return ("Please Enter valid password(Min. 6 character)");
+                          return ("Please Enter a valid password(Min. 6 character)");
                         }
                         return null;
                       },
@@ -140,10 +146,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.password),
-                          contentPadding:
-                          const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                          hintText: 'Password',
+                          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                          suffixIcon: Icon(Icons.lock_open_outlined),
+                          fillColor: Colors.grey.shade100,
+                          filled: true,
+                          hintText: "Enter your Password",
+                          labelText: "Password",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           )),
@@ -167,10 +175,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                       textInputAction: TextInputAction.done,
                       decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.password),
-                          contentPadding:
-                          const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                          hintText: 'Confirm Password',
+                          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                          suffixIcon: Icon(Icons.lock_open_outlined),
+                          fillColor: Colors.grey.shade100,
+                          filled: true,
+                          labelText: "Confirm Password",
+                          hintText: "Re-enter your password",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           )),
@@ -193,7 +203,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 builder: (context) => EmailSignUpWrapper(
                                   email: email,
                                   password: password,
-                                 name: name,
+                                  name: name,
                                 ),
                               ),
                             );
