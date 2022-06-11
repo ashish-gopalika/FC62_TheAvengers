@@ -4,11 +4,11 @@ class EndUserModel{
   String? name;
   String? image;
   String? phoneNumber;
-  List<String>? addresses;
+  String? address;
   List<String>? orders;
   List<String>? cart;
 
-  EndUserModel({this.uid,this.email,this.name,this.orders,this.phoneNumber,this.addresses,this.cart,this.image});
+  EndUserModel({this.uid,this.email,this.name,this.orders,this.phoneNumber,this.address,this.cart,this.image});
 
   //data from server
   factory EndUserModel.fromMap(map){
@@ -19,7 +19,7 @@ class EndUserModel{
       image: map['image'],
       phoneNumber: map['phoneNumber'],
       cart: map['cart'] is Iterable ? List.from(map['cart']) : null,
-      addresses: map['addresses'] is Iterable ? List.from(map['addresses']) : null,
+      address: map['addresses'],
       orders: map['orders'] is Iterable ? List.from(map['orders']) : null,
     );
   }
@@ -31,7 +31,7 @@ class EndUserModel{
       'email': email,
       'name': name,
       'phoneNumber': phoneNumber,
-      'addresses': addresses,
+      'addresses': address,
       'cart': cart,
       'orders': orders,
       'image': image,

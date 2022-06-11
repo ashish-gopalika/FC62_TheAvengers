@@ -15,7 +15,7 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneNameController = TextEditingController();
-
+  final TextEditingController addressController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +61,8 @@ class _EditProfileState extends State<EditProfile> {
                   "Full Name", UserData.endUserModel.name!, nameController),
               buildTextField("Phone Number", UserData.endUserModel.phoneNumber!,
                   phoneNameController),
+              buildTextField("Address ", UserData.endUserModel.address!,
+                  addressController),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,6 +97,15 @@ class _EditProfileState extends State<EditProfile> {
                       else{
                         name=UserData.endUserModel.name!;
                         SharedPreferenceDB.setValue('name', UserData.endUserModel.name);
+                      }
+
+                      if(addressController.text.isNotEmpty) {
+                        SharedPreferenceDB.setValue('address', addressController.text);
+                        UserData.endUserModel.address = addressController.text;
+                      }
+                      else{
+                        addressController.text=UserData.endUserModel.address!;
+                        SharedPreferenceDB.setValue('name', UserData.endUserModel.address);
                       }
 
                       if(phoneNumber.isNotEmpty){

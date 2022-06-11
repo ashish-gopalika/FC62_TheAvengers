@@ -15,4 +15,10 @@ class SnackBarMessages{
     content: Text('Error occurred please try again'),
     backgroundColor: Colors.red,
   );
+
+  static const addressAddedSnackBar = SnackBar(
+    content: Text('Address added successfully'),
+    backgroundColor: Colors.red,
+  );
+
 }

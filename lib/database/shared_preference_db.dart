@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:enduserapp/model/address_model.dart';
 import 'package:enduserapp/model/user_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,6 +25,7 @@ class SharedPreferenceDB{
     UserData.endUserModel.email=prefs.getString('email');
     UserData.endUserModel.name=prefs.getString('name');
     UserData.endUserModel.phoneNumber=prefs.getString('phoneNumber');
+    UserData.endUserModel.address=prefs.getString('address');
     value = prefs.getString(valueName);
     return value;
   }
