@@ -1,9 +1,9 @@
+import 'package:enduserapp/database/firestore_database.dart';
+import 'package:enduserapp/model/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:enduserapp/screens/main.dart';
 import 'package:enduserapp/services/email_auth.dart';
-import 'package:enduserapp/screens/profile/edit_addresses.dart';
 import 'package:enduserapp/screens/profile/edit_profile.dart';
-import 'package:enduserapp/screens/profile/delete_account.dart';
 import 'package:enduserapp/screens/profile/menu_item.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
@@ -27,16 +27,16 @@ class ProfileScreen extends StatelessWidget {
                 ),
               },
             ),
-            ProfileMenu(
-              text: "Edit Addresses",
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>  EditAddresses()),
-                );
-              },
-            ),
+            // ProfileMenu(
+            //   text: "Edit Addresses",
+            //   press: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //           builder: (context) =>  EditAddresses()),
+            //     );
+            //   },
+            // ),
             ProfileMenu(
               text: "Delete Account",
               press: () {
@@ -48,10 +48,11 @@ class ProfileScreen extends StatelessWidget {
                     actions: <Widget>[
                       TextButton(
                         onPressed: () {
+                          FirestoreDB.deleteAccount(UserData.endUserModel.uid!);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const DeleteAccount()),
+                                builder: (context) => const MainScreen()),
                           );
                         },
                         child: const Text('Delete Now'),

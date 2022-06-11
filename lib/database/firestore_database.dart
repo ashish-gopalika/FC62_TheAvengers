@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:enduserapp/database/shared_preference_db.dart';
+import 'package:enduserapp/model/address_model.dart';
 import 'package:enduserapp/model/cart_data.dart';
 import 'package:enduserapp/model/end_user_model.dart';
 import 'package:enduserapp/model/order_data.dart';
@@ -28,7 +29,7 @@ class FirestoreDB{
     UserData.endUserModel.name = name;
     UserData.endUserModel.phoneNumber='none';
     UserData.endUserModel.cart=[];
-    UserData.endUserModel.addresses=[];
+    UserData.endUserModel.address='none';
     UserData.endUserModel.orders = [];
 
     await firebaseFirestore
@@ -49,6 +50,7 @@ class FirestoreDB{
           SharedPreferenceDB.setValue('email',value.data()!['email']);
           SharedPreferenceDB.setValue('name',value.data()!['name']);
           SharedPreferenceDB.setValue('phoneNumber',value.data()!['name']);
+          SharedPreferenceDB.setValue('address',value.data()!['address']);
         return EndUserModel.fromMap(value.data());
     });
     return EndUserModel();
@@ -150,6 +152,28 @@ class FirestoreDB{
           .removeFromCart(index);
       print('item deleted');
     });
+  }
+
+  static Future<bool> deleteAccount(String id) async{
+    bool state = false;
+    SharedPreferenceDB.resetPreferences();
+    await FirebaseFirestore.instance.collection('users').doc(id).delete().then((value) {state=true;});
+    await FirebaseAuth.instance.currentUser!.delete();
+    return state;
+  }
+
+  static void moveToOrders() async{
+      for(var cart in CartData.cartItems) {
+        firebaseFirestore
+            .collection('orders').doc(cart.uid!+DateTime.now().toString()).set(cart.toMap());
+        OrderData.orderItems.add(cart);
+      }
+
+      for(var cart in CartData.cartItems) {
+        firebaseFirestore
+            .collection('cart').doc(cart.uid).delete();
+      }
+
   }
 
 }

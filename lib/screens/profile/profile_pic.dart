@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:flutter/services.dart';
-import 'dart:io';
-import 'dart:math';
+
 class ProfilePic extends StatelessWidget {
   const ProfilePic({
     Key? key,

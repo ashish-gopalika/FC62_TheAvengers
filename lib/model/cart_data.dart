@@ -29,4 +29,9 @@ class CartData extends ChangeNotifier{
     notifyListeners();
   }
 
+  void clearCart(){
+    cartItems.clear();
+    notifyListeners();
+  }
+
 }

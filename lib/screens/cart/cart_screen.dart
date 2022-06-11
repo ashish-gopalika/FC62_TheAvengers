@@ -13,7 +13,7 @@ class CartScreen extends StatelessWidget {
     int getSum(){
       int sum=0;
       for(OrderModel element in Provider.of<CartData>(context).getCartItems){
-        sum=sum+int.parse(element.price!);
+        sum=sum+((int.parse(element.price!))*int.parse(element.quantity!));
       }
       return sum;
     }
